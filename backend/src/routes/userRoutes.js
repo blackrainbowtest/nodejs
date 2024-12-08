@@ -1,12 +1,17 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
+const { serializeForRegistration } = require('../serializers/userSerializer');
+const { serializeUserLogin } = require('../serializers/userSerializer');
+// serializeUsers
 
 const router = express.Router();
 
 // Registration
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
+  console.log(req.body);
+  
   
   try {
     // is new user
@@ -27,7 +32,9 @@ router.post("/register", async (req, res) => {
       lastLoginDate: new Date(),
     });
 
-    res.status(201).json(newUser);
+    const serializedUser = serializeForRegistration(newUser);
+
+    res.status(201).json({ message: "User registered successfully", user: serializedUser });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
@@ -51,8 +58,10 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
+    const serializedUser = serializeUserLogin(user);
+
     // logis success
-    res.json(user);
+    res.json({ message: "Login successful", user: serializedUser });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");

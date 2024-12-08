@@ -3,9 +3,10 @@ const sequelize = require("../config/database");
 
 const SubCategory = sequelize.define("SubCategory", {
   id: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     allowNull: false,
+    autoIncrement: true,
     unique: true,
   },
   name: {
