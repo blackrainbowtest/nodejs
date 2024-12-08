@@ -16,7 +16,7 @@ export const loginUser = createAsyncThunk(
   async (userData, { dispatch, rejectWithValue }) => {
     try {
       dispatch(setLoading(true));
-      const response = await axios.get(`${apiUrl}/users/login`, userData);
+      const response = await axios.post(`${apiUrl}/users/login`, userData);
       return response.data;
     } catch (err) {
       dispatch(addError(err.message));
@@ -34,7 +34,7 @@ export const verifyToken = createAsyncThunk(
   async (token, { dispatch, rejectWithValue }) => {
     try {
       dispatch(setLoading(true));
-      const response = await axios.get(`${apiUrl}/users/token`, {
+      const response = await axios.post(`${apiUrl}/users/token`, {
         params: { token },
       });
       if (response.data.length > 0) {

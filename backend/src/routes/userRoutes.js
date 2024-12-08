@@ -48,10 +48,12 @@ router.post("/login", async (req, res) => {
   try {
     // email check
     const user = await User.findOne({ where: { email } });
+    
     if (!user) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
-
+    
+    console.log("00000000000000", password, user.password);
     // password check
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {

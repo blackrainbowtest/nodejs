@@ -55,12 +55,12 @@ export const createUserData = (name, email, password) => {
 
 export const createUserLoginData = (email, password, rememberMe) => {
     const timeNow = getCurrentUnixTime();
-    const hashedPassword = hashPassword(password);
+    // const hashedPassword = hashPassword(password);
     const token = generatePseudoToken();
 
     const userData = {
         email,
-        password: hashedPassword,
+        password: password,
         lastLoginDate: timeNow,
     };
 
