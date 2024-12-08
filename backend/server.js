@@ -1,14 +1,21 @@
 const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const path = require("path");
 // DB
 const sequelize = require("./src/config/database");
+const userRoutes = require("./src/routes/userRoutes");
+const categoryRoutes = require("./src/routes/categoryRoutes");
+const subCategoryRoutes = require("./src/routes/subCategoryRoutes");
+const productRoutes = require("./src/routes/productRoutes");
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.use(cors());
 
 // Middleware
 app.use(bodyParser.json());
@@ -23,6 +30,11 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Для 
     console.error("Unable to connect to the database:", error);
   }
 })();
+
+app.use("/users", userRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/subcategories", subCategoryRoutes);
+app.use("/api/products", productRoutes);
 
 // Test Route
 app.get("/", (req, res) => {

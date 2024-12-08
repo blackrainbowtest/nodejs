@@ -43,11 +43,11 @@ export const validateField = (field, value, setError, setHelperText) => {
 
 export const createUserData = (name, email, password) => {
     const timeNow = getCurrentUnixTime();
-    const hashedPassword = hashPassword(password);
+    // const hashedPassword = hashPassword(password);
     return {
         name,
         email,
-        password: hashedPassword,
+        password: password,
         registerDate: timeNow,
         lastLoginDate: timeNow,
     };
