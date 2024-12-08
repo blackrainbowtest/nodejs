@@ -4,7 +4,7 @@ import apiUrl from 'app/base/base_url';
 import { addError, setLoading } from 'features/global/GlobalSlice';
 
 /**
- * Register user
+ * Register user 
  */
 export const registerUser = createAsyncThunk(
   'user/registerUser',
@@ -12,7 +12,6 @@ export const registerUser = createAsyncThunk(
     try {
       // User registration
       console.log(userData);
-      
       const response = await axios.post(`${apiUrl}/users/register`, userData);
 
       return response.data;

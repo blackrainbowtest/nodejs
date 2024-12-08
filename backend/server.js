@@ -32,9 +32,9 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Для 
 })();
 
 app.use("/users", userRoutes);
-app.use("/api/categories", categoryRoutes);
-app.use("/api/subcategories", subCategoryRoutes);
-app.use("/api/products", productRoutes);
+app.use("/categories", categoryRoutes);
+app.use("/subcategories", subCategoryRoutes);
+app.use("/products", productRoutes);
 
 // Test Route
 app.get("/", (req, res) => {

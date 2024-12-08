@@ -4,7 +4,7 @@ import axios from "axios";
 import apiUrl from 'app/base/base_url';
 import { addError, addNotification, setLoading } from 'features/global/GlobalSlice';
 
-const url = `${apiUrl}/subCategory`;
+const url = `${apiUrl}/subcategories`;
 
 export const getSubCategorys = createAsyncThunk(
     'subCategory/getSubCategorys',

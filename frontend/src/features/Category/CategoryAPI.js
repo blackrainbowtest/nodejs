@@ -5,7 +5,7 @@ import apiUrl from 'app/base/base_url';
 import { convertImageToBase64 } from 'utils/image';
 import { addError, addNotification, setLoading } from 'features/global/GlobalSlice';
 
-const url = `${apiUrl}/category`;
+const url = `${apiUrl}/categories`;
 
 export const getCategorys = createAsyncThunk(
     'category/getCategorys',

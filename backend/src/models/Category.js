@@ -14,7 +14,7 @@ const Category = sequelize.define("Category", {
     allowNull: false,
   },
   image: {
-    type: DataTypes.STRING, // Путь к изображению
+    type: DataTypes.STRING,
     allowNull: false,
   },
   gender: {

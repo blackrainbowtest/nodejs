@@ -12,7 +12,7 @@ export const loginUser = createAsyncThunk(
   async (userData, { dispatch, rejectWithValue }) => {
     try {
       dispatch(setLoading(true));
-      const response = await axios.get(`${apiUrl}/users`, {
+      const response = await axios.get(`${apiUrl}/users/login`, {
         params: {
           email: userData.email,
         },
@@ -41,14 +41,14 @@ export const loginUser = createAsyncThunk(
   }
 );
 /**
- * Verify token
+ * Verify token need add JWT token later
  */
 export const verifyToken = createAsyncThunk(
   'user/verifyToken',
   async (token, { dispatch, rejectWithValue }) => {
     try {
       dispatch(setLoading(true));
-      const response = await axios.get(`${apiUrl}/users`, {
+      const response = await axios.get(`${apiUrl}/users/token`, {
         params: { token }
       });
       if (response.data.length > 0) {
