@@ -2,7 +2,6 @@ import { Box } from "@mui/material";
 import { memo } from "react";
 import styled from "styled-components";
 import noImage from "images/noImage.jpg";
-import { decodeBase64ToImage } from 'utils/image';
 import { truncateName } from 'utils/text';
 
 const MainContainer = styled(Box)`
@@ -40,8 +39,7 @@ function CategoryComponent({ item, active, callback }) {
   const handleMouseDownCategory = (event) => {
     event.preventDefault();
   };
-
-  const imageUrl = item?.image ? decodeBase64ToImage(item?.image) : null;
+console.log(item?.image);
 
   return (
     <MainContainer
@@ -49,7 +47,7 @@ function CategoryComponent({ item, active, callback }) {
       onClick={handleClickCategory}
       onMouseDown={handleMouseDownCategory}
     >
-      <img src={imageUrl ? imageUrl : noImage} alt='' />
+      <img src={item?.image ? item?.image : noImage} alt='' />
       <p>{item?.name ? truncateName(item.name) : "no name"}</p>
     </MainContainer>
   );

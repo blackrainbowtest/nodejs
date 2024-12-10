@@ -1,9 +1,11 @@
+const hostUrl = process.env.HOST_URL || 'http://localhost:5000';
+
 const serializeCategory = (category) => {
   return {
     id: category.id,
     name: category.name,
     gender: category.gender,
-    image: category.image ? `${process.env.HOST_URL}${category.image}` : null, // Полный путь к изображению
+    image: category.image ? `${hostUrl}${category.image}` : null,
   };
 };
 

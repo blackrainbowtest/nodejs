@@ -29,7 +29,7 @@ const categorySlice = createSlice({
                 state.data = action.payload;
             })
             .addCase(addCategory.fulfilled, (state, action) => {
-                state.data = [...state.data, action.payload];
+                state.data = [...state.data, action.payload.category];
             });
     }
 });

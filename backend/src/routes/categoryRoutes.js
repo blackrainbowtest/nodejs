@@ -14,12 +14,12 @@ const storage = multer.diskStorage({
   filename: (req, file, cb) => {
     // make random name
     cb(null, Date.now() + path.extname(file.originalname));
-  }
+  },
 });
 
 const upload = multer({ storage });
 
-// 
+// post route
 router.post("/", upload.single("image"), async (req, res) => {
   const { name, gender } = req.body;
   const image = req.file ? `/images/${req.file.filename}` : null;
@@ -29,13 +29,30 @@ router.post("/", upload.single("image"), async (req, res) => {
     const category = await Category.create({
       name,
       gender,
-      image
+      image: `${process.env.BASE_URL || "http://localhost:5000"}${image}`,
     });
 
     res.json({
       message: "Category created successfully",
-      category
+      category,
     });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// post route
+router.get("/", async (req, res) => {
+  try {
+    const categories = await Category.findAll();
+
+    const categoriesWithImages = categories.map((category) => ({
+      ...category.toJSON(),
+      image: category.image,
+    }));
+
+    res.json(categoriesWithImages);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");

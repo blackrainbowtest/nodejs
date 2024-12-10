@@ -18,8 +18,10 @@ export const getCategorys = createAsyncThunk(
       const response = await axios.get(url);
       return response.data;
     } catch (err) {
-      dispatch(addError(err.message));
-      return rejectWithValue(err.message);
+      const errorMessage =
+        err.response?.data?.message || err.message || "An error occurred";
+      dispatch(addError(errorMessage));
+      return rejectWithValue(errorMessage);
     } finally {
       dispatch(setLoading(false));
     }
@@ -41,11 +43,22 @@ export const addCategory = createAsyncThunk(
 
       dispatch(setLoading(true));
 
-      const response = await axios.post(url, category);
+      const formData = new FormData();
+      formData.append("name", category.name);
+      formData.append("gender", category.gender);
+      formData.append("image", category.image);
+
+      const response = await axios.post(url, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
       dispatch(addNotification("Category add successful"));
       return response.data;
     } catch (err) {
-        const errorMessage = err.response?.data?.message || err.message || 'An error occurred';
+      const errorMessage =
+        err.response?.data?.message || err.message || "An error occurred";
       dispatch(addError(errorMessage));
       return rejectWithValue(errorMessage);
     } finally {

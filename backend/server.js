@@ -19,7 +19,7 @@ app.use(cors());
 
 // Middleware
 app.use(bodyParser.json());
-app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Для работы с файлами
+app.use("", express.static(path.join(__dirname, "uploads")));
 
 // DB connection check
 (async () => {
@@ -30,6 +30,9 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Для 
     console.error("Unable to connect to the database:", error);
   }
 })();
+
+// static
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 app.use("/users", userRoutes);
 app.use("/categories", categoryRoutes);
