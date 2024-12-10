@@ -17,6 +17,7 @@ export const loginUser = createAsyncThunk(
     try {
       dispatch(setLoading(true));
       const response = await axios.post(`${apiUrl}/users/login`, userData);
+      dispatch(addNotification(response.data.message));
       return response.data;
     } catch (err) {
       dispatch(addError(err.message));
@@ -34,15 +35,12 @@ export const verifyToken = createAsyncThunk(
   async (token, { dispatch, rejectWithValue }) => {
     try {
       dispatch(setLoading(true));
-      const response = await axios.post(`${apiUrl}/users/token`, {
-        params: { token },
+      const response = await axios.post(`${apiUrl}/users/token`, {}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
-      if (response.data.length > 0) {
-        dispatch(addNotification("Login success."));
-        return response.data;
-      } else {
-        throw new Error("Invalid token.");
-      }
+      return response.data;
     } catch (err) {
       dispatch(addError(err.message));
       return rejectWithValue(err.message);

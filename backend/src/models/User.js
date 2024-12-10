@@ -29,6 +29,10 @@ const User = sequelize.define("User", {
   lastLoginDate: {
     type: DataTypes.DATE,
   },
+  token: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
 });
 
 module.exports = User;

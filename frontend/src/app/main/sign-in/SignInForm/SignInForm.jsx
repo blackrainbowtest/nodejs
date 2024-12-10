@@ -49,9 +49,9 @@ function SignInForm() {
         if (loginUser.fulfilled.match(result)) {
           navigate("/");
           if (rememberMe) {
-            localStorage.setItem("authToken", result.payload.token);
+            localStorage.setItem("authToken", result.payload?.user?.token);
           } else {
-            sessionStorage.setItem("authToken", result.payload.token);
+            sessionStorage.setItem("authToken", result.payload?.user?.token);
           }
         }
       });

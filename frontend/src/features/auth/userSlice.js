@@ -18,11 +18,11 @@ const userSlice = createSlice({
                 state.user = action.payload;
             })
             .addCase(loginUser.fulfilled, (state, action) => {
-                state.user = action.payload[0];
+                state.user = action.payload.user;
                 state.isAuthenticated = true;
             })
             .addCase(verifyToken.fulfilled, (state, action) => {
-                state.user = action.payload[0];
+                state.user = action.payload.user;
                 state.isAuthenticated = true;
             })
             .addCase(logoutUser.fulfilled, (state) => {
