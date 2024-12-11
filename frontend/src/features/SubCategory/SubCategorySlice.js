@@ -18,6 +18,8 @@ const subCategorySlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getSubCategorys.fulfilled, (state, action) => {
+                console.log(action.payload);
+                
                 state.data = action.payload;
             })
             .addCase(addSubCategory.fulfilled, (state, action) => {

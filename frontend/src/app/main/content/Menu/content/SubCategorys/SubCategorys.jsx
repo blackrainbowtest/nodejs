@@ -55,7 +55,7 @@ function SubCategorys() {
       .slice()
       .filter(
         (c) =>
-          c.parent ===
+          Number(c.parent) ===
           (chooesedGender ? choosedCategory.female : choosedCategory.male)
       );
     setFiltredSubCategory(filtered);

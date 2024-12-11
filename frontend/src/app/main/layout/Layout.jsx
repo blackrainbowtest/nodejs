@@ -12,7 +12,7 @@ function Layout() {
     <MainContainer sx={{ flexGrow: 1 }}>
       <LayoutContainer>
         <Logo />
-        <Search />
+        {/* <Search /> */}
         <Action />
       </LayoutContainer>
       <Outlet />

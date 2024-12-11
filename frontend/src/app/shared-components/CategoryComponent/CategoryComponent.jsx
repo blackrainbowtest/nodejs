@@ -39,7 +39,7 @@ function CategoryComponent({ item, active, callback }) {
   const handleMouseDownCategory = (event) => {
     event.preventDefault();
   };
-console.log(item?.image);
+  console.log(item);
 
   return (
     <MainContainer
