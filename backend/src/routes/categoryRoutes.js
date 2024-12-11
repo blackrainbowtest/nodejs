@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const Category = require("../models/Category");
+const { serializeCategory } = require("../serializers/categorySerializer");
 
 const router = express.Router();
 
@@ -32,9 +33,11 @@ router.post("/", upload.single("image"), async (req, res) => {
       image: `${process.env.BASE_URL || "http://localhost:5000"}${image}`,
     });
 
-    res.json({
+    const serializedCategorys = serializeCategory(category)
+
+    res.status(201).json({
       message: "Category created successfully",
-      category,
+      category: serializedCategorys,
     });
   } catch (error) {
     console.error(error);
@@ -52,7 +55,9 @@ router.get("/", async (req, res) => {
       image: category.image,
     }));
 
-    res.json(categoriesWithImages);
+    const serializedCategorys = [...categoriesWithImages.map((category => serializeCategory(category)))]
+
+    res.json(serializedCategorys);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
