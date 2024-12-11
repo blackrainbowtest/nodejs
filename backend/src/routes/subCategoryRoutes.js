@@ -1,6 +1,6 @@
 const express = require("express");
 const SubCategory = require("../models/SubCategory");
-
+const {serializeSubCategory} = require("../serializers/subCategorySerializer")
 
 const router = express.Router();
 
@@ -8,8 +8,8 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const subcategories = await SubCategory.findAll();
-    const serializedSubCategorys = [...subcategories.map((subCategory) => serializedSubCategorys)]
-    res.json(subcategories);
+    const serializedSubCategorys = [...subcategories.map((subCategory) => serializeSubCategory(subCategory))]
+    res.json(serializedSubCategorys);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
