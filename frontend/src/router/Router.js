@@ -20,8 +20,9 @@ const AuthWrapper = ({ children }) => {
       if (token) {
         try {
           dispatch(verifyToken(token))
-            .then(() => {
+            .then((data) => {
               setAuthStatus(true);
+              console.log(data, 5555555555555555);
             })
             .catch(() => {
               setAuthStatus(false);

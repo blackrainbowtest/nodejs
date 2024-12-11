@@ -25,6 +25,9 @@ const userSlice = createSlice({
                 state.user = action.payload.user;
                 state.isAuthenticated = true;
             })
+            .addCase(verifyToken.rejected, (state, _) => {
+                state.isAuthenticated = false;
+            })
             .addCase(logoutUser.fulfilled, (state) => {
                 state.isAuthenticated = false;
                 state.user = null;
