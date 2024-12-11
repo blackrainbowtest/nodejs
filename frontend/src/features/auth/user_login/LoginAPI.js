@@ -43,7 +43,7 @@ export const verifyToken = createAsyncThunk(
       return response.data;
     } catch (err) {
       dispatch(addError(err.message));
-      return rejectWithValue(err.message);
+      return rejectWithValue(err);
     } finally {
       dispatch(setLoading(false));
     }

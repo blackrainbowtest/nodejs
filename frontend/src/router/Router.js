@@ -1,4 +1,4 @@
-import { Navigate, useRoutes } from "react-router-dom";
+import { Navigate, useNavigate, useRoutes } from "react-router-dom";
 import Error404Page from "app/main/404/Error404Page";
 import Layout from "app/main/layout/Layout";
 import Content from "app/main/content/Content";
@@ -11,6 +11,8 @@ import { verifyToken } from "features/auth/user_login/LoginAPI";
 const AuthWrapper = ({ children }) => {
   const [authStatus, setAuthStatus] = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
     const checkAuthStatus = async () => {
       const token =
@@ -19,14 +21,14 @@ const AuthWrapper = ({ children }) => {
 
       if (token) {
         try {
-          dispatch(verifyToken(token))
-            .then((data) => {
-              setAuthStatus(true);
-              console.log(data, 5555555555555555);
-            })
-            .catch(() => {
-              setAuthStatus(false);
-            });
+          const action = await dispatch(verifyToken(token));
+
+          if (action.meta.requestStatus === "fulfilled") {
+            setAuthStatus(true);
+          } else {
+            setAuthStatus(false);
+            navigate("/sign-in");
+          }
         } catch (error) {
           console.error("Token verification failed:", error);
           setAuthStatus(false);
@@ -37,7 +39,7 @@ const AuthWrapper = ({ children }) => {
     };
 
     checkAuthStatus();
-  }, [dispatch]);
+  }, [dispatch, navigate]);
 
   if (authStatus === null) {
     return <div>Loading...</div>; // Show a loading indicator while checking auth status
