@@ -21,16 +21,17 @@ function DataContent({ data }) {
           elm.subcategory === subCategory.currentSubcategory
         );
       })
-    : data.filter((elm) => {
+    : data.filter((elm) => {     
         return (
           elm.gender === category.gender &&
-          elm.category ===
+          Number(elm.category) ===
             (category.gender
               ? category.category.female
               : category.category.male) &&
-          elm.subcategory === subCategory.currentSubcategory
+          Number(elm.subcategory) === subCategory.currentSubcategory
         );
       });
+      
   return (
     <MainContainer container spacing={2}>
       {currentData.map((elm) => (

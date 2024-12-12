@@ -9,14 +9,14 @@ const router = express.Router();
 // post route
 router.post("/", upload.single("image"), async (req, res) => {
   const { name, gender } = req.body;
-  const image = req.file ? `/images/${req.file.filename}` : null;
+  const image = req.file ? `${process.env.BASE_URL || "http://localhost:5000"}/images/${req.file.filename}` : null;
 
   try {
     // create new category
     const category = await Category.create({
       name,
       gender,
-      image: `${process.env.BASE_URL || "http://localhost:5000"}${image}`,
+      image,
     });
 
     const serializedCategorys = serializeCategory(category);

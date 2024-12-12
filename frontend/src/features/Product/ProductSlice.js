@@ -23,7 +23,7 @@ const productSlice = createSlice({
                 state.data = action.payload;
             })
             .addCase(addProduct.fulfilled, (state, action) => {
-                state.data = [...state.data, action.payload]
+                state.data = [...state.data, action.payload.product]
             })
             .addCase(deleteProduct.fulfilled, (state, action) => {
                 state.data = state.data.filter((prod) => prod.id !== action.payload)

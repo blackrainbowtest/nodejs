@@ -14,7 +14,7 @@ const SubCategory = sequelize.define("SubCategory", {
     allowNull: false,
   },
   parent: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     references: {
       model: "Categories",
       key: "id",

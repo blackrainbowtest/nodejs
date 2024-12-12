@@ -120,6 +120,8 @@ function ProductDataComponent({ handleClose }) {
     const activeSubCategorys = subCategory.filter(
       (sb) => sb.parent === selectedCategory
     );
+    console.log(activeSubCategorys);
+    
     const newSubCategory = activeSubCategorys.length
       ? activeSubCategorys[0].id
       : -1;

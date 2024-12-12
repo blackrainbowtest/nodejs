@@ -41,10 +41,11 @@ function ProductSubCategory({ props }) {
   const handleChange = (event, newValue) => {
     setSelectedSubCategory(newValue);
   };
+console.log(subCategory);
 
   useEffect(() => {
     const selectActiveSubCategorys = subCategory.filter(
-      (sb) => sb.parent === selectedCategory
+      (sb) => Number(sb.parent) === selectedCategory
     );
     setActiveSubCategorys(selectActiveSubCategorys);
   }, [selectedCategory, subCategory]);

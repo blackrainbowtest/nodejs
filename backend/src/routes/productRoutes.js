@@ -53,7 +53,7 @@ router.post("/", upload.array("images", 4), async (req, res) => {
   }
 
   const image = req.files
-    ? req.files.map((file) => `/images/${file.filename}`)
+    ? req.files.map((file) => `${process.env.BASE_URL || "http://localhost:5000"}/images/${file.filename}`)
     : [];
 
   try {

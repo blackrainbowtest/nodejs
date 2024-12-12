@@ -16,8 +16,6 @@ export const getCategorys = createAsyncThunk(
     try {
       dispatch(setLoading(true));
       const response = await axios.get(url);
-      console.log("getCategorys", response.data);
-      
       return response.data;
     } catch (err) {
       const errorMessage =

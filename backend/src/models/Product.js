@@ -38,7 +38,7 @@ const Product = sequelize.define("Product", {
     allowNull: false,
   },
   userId: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     references: {
       model: "Users",
       key: "id",
@@ -53,14 +53,14 @@ const Product = sequelize.define("Product", {
     allowNull: false,
   },
   category: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     references: {
       model: "Categories",
       key: "id",
     },
   },
   subcategory: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     references: {
       model: "SubCategories",
       key: "id",

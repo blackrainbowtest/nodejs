@@ -21,8 +21,6 @@ const subCategorySlice = createSlice({
                 state.data = action.payload;
             })
             .addCase(addSubCategory.fulfilled, (state, action) => {
-                console.log(action.payload);
-
                 state.data = [...state.data, action.payload.subCategory];
             });
     }

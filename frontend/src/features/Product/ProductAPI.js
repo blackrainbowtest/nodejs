@@ -31,8 +31,6 @@ export const addProduct = createAsyncThunk(
   "products/addProducts",
   async (productData, { dispatch, rejectWithValue }) => {
     try {
-      console.log(productData);
-      
       dispatch(setLoading(true));
 
       const formData = new FormData();
