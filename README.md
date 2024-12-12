@@ -41,23 +41,7 @@ Check package.json files
     soon...
 
 3. **🌟 Example Usage:**
-   Here are some screenshots of the project:
-
-    - **How to change language:**
-    ![Main Page](https://drive.google.com/uc?id=1ckZx-UTGVOEnQur-EhHwCwTerbqicTfo)
-
-    - **How to search locations:**
-    ![Adding to Favorites](https://drive.google.com/uc?id=1Venl4APImZtYqCBCZAELsMAfN_h_SIoJ)
-
-    - **How to set mark on map:**
-    ![Favorites Section](https://drive.google.com/uc?id=1UZz6uAga7iAr-iZeuU-n9gcpzp_kx55Y)
-    ![Favorites Section](https://drive.google.com/uc?id=1xeJ6S3UMSm_O0kQVVhGxRrJ5tsfYYOaE)
-
-    - **How to add images:**
-    ![Removing from Favorites](https://drive.google.com/uc?id=1olPf_S7vBcoXhPInyvMMNq8o2fqIogPF)
-
-    - **How to watch images:**
-    ![Removing from Favorites](https://drive.google.com/uc?id=1qPkTcQKFikQBxzRQdRIuZ8nmJW9BmP2B)
+   Soon...
 
 </details>
 
