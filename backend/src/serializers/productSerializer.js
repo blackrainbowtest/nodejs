@@ -10,7 +10,7 @@ const serializeProduct = (product) => {
     works: product.works,
     userId: product.userId,
     currentTime: product.currentTime,
-    gender: product.gender ? "male" : "female",
+    gender: product.gender,
     category: product.category,
     subcategory: product.subcategory,
   };
