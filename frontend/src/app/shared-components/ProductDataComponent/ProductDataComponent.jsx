@@ -29,7 +29,7 @@ function ProductDataComponent({ handleClose }) {
       ? currentData
       : {
           article: "A544",
-          tags: ["ts"],
+          tags: ["ring"],
           images: [],
           golds: [
             {
